@@ -11,15 +11,18 @@ const router = express.Router();
 
 
 
-router.get('/',(req, res) => {
-  res.send(pokemonData)
-}).get('/:id',(req, res) => {
-  res.send(getPokemonById(parseInt(req.params.id), pokemonData));
+router.get('/',(req, res, next) => {
+  next(new Error("No pokemon data"))
+  res.status(200).send(pokemonData)
+}).get('/:id',(req, res, next) => {
+  next(new Error("No pokemon found"))
+  res.status(200).send(getPokemonById(parseInt(req.params.id), pokemonData));
 
-}).get('/:id/:info', (req, res) => {
+}).get('/:id/:info', (req, res, next) => {
+  next(new Error("Pokemon's info not found"))
 const {id, info} = req.params;
 const getInfo = getPokemonById(parseInt(id), pokemonData)[info];
-res.send(getInfo);
+res.status(200).send(getInfo);
 })
 
 
