@@ -1,10 +1,11 @@
 const express = require('express')
-
+const cors = require('cors')
 const pokemonData = require('../pokemon.json');
 const getElementById = require('../controller/controller')
 
 const app = express()
-
+app.use(cors())
+app.use(express.json())
 
 const router = express.Router();
 
