@@ -14,7 +14,12 @@ const router = express.Router();
 router.get('/',(req, res) => {
   res.send(pokemonData)
 }).get('/:id',(req, res) => {
-  res.send(getPokemonById(parseInt(req.params.id), pokemonData))
+  res.send(getPokemonById(parseInt(req.params.id), pokemonData));
+
+}).get('/:id/:info', (req, res) => {
+const {id, info} = req.params;
+const getInfo = getPokemonById(parseInt(id), pokemonData)[info];
+res.send(getInfo);
 })
 
 
