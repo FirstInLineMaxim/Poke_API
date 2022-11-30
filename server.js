@@ -4,7 +4,9 @@ const router = require('./routes/router')
 
 const app = express();
 
+
 const port = process.env.PORT || 4444;
+
 
 
 app.use('/api/v1/pokemon', router, (req, res, next) => {
