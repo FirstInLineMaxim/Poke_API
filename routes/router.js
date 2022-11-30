@@ -11,11 +11,9 @@ const router = express.Router();
 
 
 
-router.route('/').get((req, res) => {
+router.get('/',(req, res) => {
   res.send(pokemonData)
-})
-
-router.route('/:id').get((req, res) => {
+}).get('/:id',(req, res) => {
   res.send(getPokemonById(parseInt(req.params.id), pokemonData))
 })
 
