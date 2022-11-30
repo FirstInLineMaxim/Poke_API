@@ -1,6 +1,6 @@
 const getElementById = (id, elementList) => {
   return elementList.find((element) => {
-    return element.id === Number(id);
+    return element.id === parseInt(id);
   });
 };
 
