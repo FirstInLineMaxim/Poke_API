@@ -1,7 +1,7 @@
 const express = require('express')
 const cors = require('cors')
 const pokemonData = require('../pokemon.json');
-const getElementById = require('../controller/controller')
+const getPokemonById = require('../controller/controller')
 
 const app = express()
 app.use(cors())
