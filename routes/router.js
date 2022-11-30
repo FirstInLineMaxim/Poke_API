@@ -16,7 +16,7 @@ router.route('/').get((req, res) => {
 })
 
 router.route('/:id').get((req, res) => {
-  res.send(res.send(getPokemonById(parseInt(req.params.id), pokemonData)))
+  res.send(getPokemonById(parseInt(req.params.id), pokemonData))
 })
 
 

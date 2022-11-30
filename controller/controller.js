@@ -1,8 +1,5 @@
 const getPokemonById = (id, pokemonList) => {
-  return pokemonList.find((pokemon) => {
-    return pokemon.id === parseInt(id);
-  });
+  return pokemonList.find((pokemon) => pokemon.id === parseInt(id));
 };
 
-
-module.exports = getPokemonById
+module.exports = getPokemonById;
