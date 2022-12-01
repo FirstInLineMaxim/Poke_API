@@ -1,12 +1,11 @@
 const { MongoClient, ServerApiVersion } = require('mongodb');
 
-// TODO: Add connection to pokemon
-async function listDatabases(client){
-    databasesList = await client.db().admin().listDatabases();
- 
-    console.log("Databases:");
-    databasesList.databases.forEach(db => console.log(` - ${db.name}`));
-};
+
+async function getPokemon(client){
+    const db = await client.db('Pokemons')
+    const Pokemon = await db.collection('Pokemon').find({}).forEach(ele => console.log(ele))
+
+}  
  
 
 async function main(){
@@ -24,7 +23,7 @@ async function main(){
         await client.connect();
  
         // Make the appropriate DB calls
-        await  listDatabases(client);
+        await  getPokemon(client)
  
     } catch (e) {
         console.error(e);
