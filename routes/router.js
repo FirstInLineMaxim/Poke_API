@@ -1,14 +1,15 @@
 const express = require("express");
 const cors = require("cors");
 // const pokemonData = require("../pokemon.json");
-const getPokemonById = require("../controller/controller");
+const {getPokemonById, createPlayer, createGame} = require("../controller/controller");
 const {main} = require('../utils/mongodb.jsx')
-const app = express();
+// const app = express();
 
 
-app.use(cors());
-app.use(express.json());
+// app.use(cors());
+// app.use(express.json());
 
+const router = express.Router();
 
 // Calls the Client Connection and stores the result which is our Collection in pokemonData
 let pokemonData = "";
@@ -19,7 +20,7 @@ pokemonData = result
 getPokemon()
 
 
-const router = express.Router();
+
 router
   .get("/", (req, res) => {
     res.status(200).send(pokemonData);
@@ -31,6 +32,8 @@ router
     const { id, info } = req.params;
     const getInfo = getPokemonById(parseInt(id), pokemonData)[info];
     res.status(200).send(getInfo);
-  });
+  }).post('/player', createPlayer)
+
+
 
 module.exports = router;
