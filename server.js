@@ -1,9 +1,10 @@
 const express = require("express");
 const cors = require("cors");
 const router = require("./routes/router");
-
+const LeaderRouter = require('./routes/LeaderRouter')
 // MONGOOSE
 const mongoose = require('mongoose');
+const { urlencoded } = require("express");
 
 const uri = "mongodb+srv://StreatRazor:G8jzcGJuKBlZyfl5@pokefight.y38z2e2.mongodb.net/?retryWrites=true&w=majority";
 mongoose.connect(uri, () => {
@@ -17,8 +18,9 @@ const app = express();
 // middlewares
 app.use(cors())
 app.use(express.json());
+app.use(urlencoded({extended:false}))
 app.use("/api/v1/pokemon", router)
-
+app.use('/Leaderboard',LeaderRouter)
 
 // if no routes are matched, show this || "*" is a wildcard
 app.use('*', (req, res) => res.status(404).json({error: "not found"}))
