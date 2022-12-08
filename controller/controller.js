@@ -32,7 +32,7 @@ const createPlayer = async (req, res) => {
 const createGame = async (req, res, next) => {
   const { player, playersPokemon, computersPokemon, won } = req.body;
   if (!player || !playersPokemon || !computersPokemon || !won) {
-    es.status(400);
+    res.status(400);
     throw new Error("Game can't start");
   }
   const game = new Game({ player, playersPokemon, computersPokemon, won });
