@@ -38,7 +38,7 @@ const createGame = async (req, res, next) => {
   const game = new Game({ player, playersPokemon, computersPokemon, won });
   try {
     await game.save();
-    await User.findByIdAndUpdate(player, { $push: { game: game._id } });
+    await Player.findByIdAndUpdate(player, { $push: { game: game._id } });
   } catch (error) {
     console.log(error.message);
   }
