@@ -2,7 +2,7 @@ const express = require("express");
 const cors = require("cors");
 // const pokemonData = require("../pokemon.json");
 const {getPokemonById, createPlayer, createGame} = require("../controller/controller");
-const {main} = require('../utils/mongodb.jsx')
+const {main} = require('../utils/getPokemon.jsx')
 // const app = express();
 
 
